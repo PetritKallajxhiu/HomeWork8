@@ -1,7 +1,9 @@
 package com.example.courseregistration.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -26,6 +28,7 @@ public class Course {
     @JoinColumn(name = "registration_id", insertable = false, updatable = false)
 //    @ToString.Exclude
     @EqualsAndHashCode.Exclude
+    @JsonIgnore
     private Registration registration;
 
     private Integer registration_id;

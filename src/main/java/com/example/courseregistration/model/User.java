@@ -3,6 +3,7 @@ package com.example.courseregistration.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -16,7 +17,8 @@ public class User {
     private Integer id;
 
     @NotNull
-    @Size(max = 15)
+    @Size(max = 10, message="required")
+    @Valid
     private String firstName;
 
     @NotNull

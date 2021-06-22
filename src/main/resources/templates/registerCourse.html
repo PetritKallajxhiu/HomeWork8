@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Register course</title>
+
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+</head>
+
+<header class="header_section secondary_header sticky text-white clearfix">
+
+    <div class="header_bottom clearfix">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <ul class="ul_li_center clearfix">
+                    <a href="/">Home</a>
+                </ul>
+
+                <ul class="ul_li_center clearfix">
+                    <a href="/courses">Courses</a>
+                </ul>
+
+                <ul class="ul_li_center clearfix">
+                    <a href="/users">User</a>
+                </ul>
+
+                <ul class="ul_li_center clearfix">
+                    <a href="/registrations">Registrations</a>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+</header>
+
+<body>
+
+<div class="reservation_form">
+    <form th:action="@{/register}" method="post" th:object="${course}">
+
+        <div class="row">
+<!--            <label>Course name</label>-->
+            <div class="col-lg-6 col-md-12 col-xs-12 col-xs-12">
+                <div class="form_item" data-aos="fade-up" data-aos-delay="400">
+                    <input type="text" name="name" placeholder="Course Name"
+                           th:field="*{name}">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+<!--            <label>Description</label>-->
+            <div class="col-lg-6 col-md-12 col-xs-12 col-xs-12">
+                <div class="form_item" data-aos="fade-up" data-aos-delay="600">
+                    <input type="text" name="description" th:field="*{description}"
+                           placeholder="Description">
+                </div>
+            </div>
+        </div>
+
+<!--        <div class="row">-->
+<!--            <div class="col-lg-6 col-md-12 col-xs-12 col-xs-12">-->
+<!--                <div class="form_item" data-aos="fade-up" data-aos-delay="600">-->
+<!--                    <input type="number" name="registration_id" th:field="*{registration_id}"-->
+<!--                           placeholder="Registration Id">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+        <div class="row">
+            <select th:field="*{registration_id}">
+                <option th:each="registration: ${registrations}" th:value="${registration.id}"
+
+                        name="registration_id" th:text="${registration.name}"></option>
+            </select>
+        </div>
+
+        <div class="row align-items-center justify-content-lg-between">
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" data-aos="fade-up"
+                 data-aos-delay="300">
+                <button type="submit" class="btn btn-primary">
+                    Add
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
